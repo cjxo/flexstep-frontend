@@ -1,0 +1,33 @@
+.wideNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 36px;
+  padding: 12px 0px;
+
+  border-bottom: 2px solid black;
+}
+
+.h1FlexTitle {
+  text-align: center;
+  /*padding: 24px 0px;*/
+  font-weight: 400;
+  font-size: 36px;
+}
+
+.ulHorizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 36px;
+  padding: 8px 0px;
+
+  li {
+    font-weight: 300;
+    font-size: 18px;
+  }
+}
+
+.ulLoginSignup {
+  margin-left: auto;
+}
