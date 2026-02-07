@@ -3,9 +3,9 @@
   flex-direction: row;
   align-items: center;
   gap: 36px;
-  padding: 12px 0px;
+  padding: 4px 0px;
 
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #555555;
 }
 
 .h1FlexTitle {
@@ -19,6 +19,8 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin-left: auto;
   gap: 36px;
   padding: 8px 0px;
 
@@ -28,6 +30,61 @@
   }
 }
 
-.ulLoginSignup {
-  margin-left: auto;
+.footerMain {
+  .content {
+    padding: 36px 0px;
+    display: flex;
+    flex-direction: row;
+    gap: 300px;
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      flex-basis: 400px;
+
+      h2 {
+        font-size: 24px;
+        font-weight: 400;
+      }
+      p {
+        color: var(--blue2);
+      }
+      .socialLinks {
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+      }
+    }
+
+    .right {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+      gap: 96px;
+      
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      ul {
+        color: var(--blue2);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 12px;
+      }
+    }
+  }
+
+  .allRightsReserved {
+    padding: 24px 0px;
+    /*text-align: center;*/
+
+    border-top: 1px solid #eeeeee;
+    font-size: 14px;
+    color: var(--blue2);
+  }
 }
