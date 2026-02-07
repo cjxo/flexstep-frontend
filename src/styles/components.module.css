@@ -31,6 +31,7 @@
 }
 
 .footerMain {
+  border-top: 2px solid #555555;
   .content {
     padding: 36px 0px;
     display: flex;

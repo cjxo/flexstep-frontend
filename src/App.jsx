@@ -6,7 +6,7 @@ const App = () => {
   return (
     <>
       <WideTopBar />
-      <main>
+      <main className="mainContent">
         <Outlet />
       </main>
       <Footer />

@@ -40,7 +40,7 @@ const WideTopBar = () => {
         </li>
 
         <li>
-          <ButtonLink to="/sign-up" className="btn-sign-up">
+          <ButtonLink to="/sign-up" className="common-button-style0 btn-sign-up">
             Sign Up
           </ButtonLink>
         </li>
