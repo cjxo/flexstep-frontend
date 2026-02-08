@@ -26,12 +26,12 @@ ul {
 }
 
 @font-face {
-  src: url("./angelina-font/AngelinaPersonalUseOnlyReg-1jzGj.ttf");
+  src: url("/angelina-font/AngelinaPersonalUseOnlyReg-1jzGj.ttf");
   font-family: "angfnt";
 }
 
 @font-face {
-  src: url("./nature-beauty-font/NatureBeautyPersonalUse-9Y2DK.ttf");
+  src: url("/nature-beauty-font/NatureBeautyPersonalUse-9Y2DK.ttf");
   font-family: "natbeufnt";
 }
 
