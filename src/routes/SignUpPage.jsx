@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import DotLoader from "../components/DotLoader";
-import api from "../lib/api";
+import { useAuth } from "../context/Auth";
 import routesStyles from "../styles/routes.module.css";
 
 const SignUpPage = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const auth = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,16 +31,14 @@ const SignUpPage = () => {
     }
 
     setIsLoading(true);
-    api
-      .user
-      .insert(first_name, last_name, username, password, email)
+    auth
+      .signup(first_name, last_name, username, password, email)
       .then(result => {
         if (!result.ok) {
           setError(result.message);
         } else {
           setError("");
           e.target.reset();
-          navigate("/log-in");
         }
 
         setIsLoading(false);

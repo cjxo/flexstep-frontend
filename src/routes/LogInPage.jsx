@@ -1,13 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import DotLoader from "../components/DotLoader";
-import api from "../lib/api";
+import { useAuth } from "../context/Auth";
 import routesStyles from "../styles/routes.module.css";
 
 const LogInPage = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
+  const auth = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,8 +17,7 @@ const LogInPage = () => {
     const password = fd.get("password");
 
     setIsLoading(true);
-    api
-      .user
+    auth
       .login(email, password)
       .then(result => {
         if (!result.ok) {
@@ -26,7 +25,6 @@ const LogInPage = () => {
         } else {
           setError("");
           e.target.reset();
-          navigate("/");
         }
 
         setIsLoading(false);
