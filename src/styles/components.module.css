@@ -24,7 +24,7 @@
   gap: 36px;
   padding: 8px 0px;
 
-  li {
+  li, li > button {
     font-weight: 300;
     font-size: 18px;
   }

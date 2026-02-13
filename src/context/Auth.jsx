@@ -35,6 +35,7 @@ const AuthProvider = ({children}) => {
         if (reloadTime > 0) {
           setUser(result.user);
           setIsAuth(true);
+          setIsLoading(false);
 
           const timer = setTimeout(() => {
             signout().then(() => navigate("/log-in"));

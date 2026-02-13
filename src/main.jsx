@@ -9,6 +9,7 @@ import LogInPage from "./routes/LogInPage.jsx";
 import ContactUsPage from "./routes/ContactUsPage.jsx";
 import AboutUsPage from "./routes/AboutUsPage.jsx";
 import CollectionsPage from "./routes/CollectionsPage.jsx";
+import ProfilePage from "./routes/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/collections",
         element: <CollectionsPage />,
+      },
+      {
+        path: "/profile",
+        element: <ProfilePage />
       },
     ],
   },

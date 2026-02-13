@@ -4,11 +4,21 @@ import {
 } from "./Commons.jsx";
 
 import { Link } from "react-router-dom";
-
+import { useAuth } from "../context/Auth";
 import styles from "../styles/components.module.css";
 
 // https://dribbble.com/shots/19404226-Shoes-Web-UI
 const WideTopBar = () => {
+  const auth = useAuth();
+
+  const handleSignOut = () => {
+    auth
+      .signout()
+      .then(result => {
+        console.log(result);
+      });
+  };
+
   return (
     <nav className={styles.wideNav}>
       <h1 className={`${styles.h1FlexTitle} flexstep-logo`}>
@@ -34,15 +44,17 @@ const WideTopBar = () => {
         </li>
 
         <li>
-          <ActiveLink0 to="/log-in">
-            Log In
+          <ActiveLink0 to={auth.isAuth ? "/profile" : "/log-in"}>
+            {auth.isAuth ? "Profile" : "Log In"}
           </ActiveLink0>
         </li>
 
         <li>
-          <ButtonLink to="/sign-up" className="common-button-style0 btn-sign-up">
+          {!auth.isAuth ? (<ButtonLink to="/sign-up" className="common-button-style0">
             Sign Up
-          </ButtonLink>
+          </ButtonLink>) : (<button onClick={handleSignOut} className="common-button-style0">
+            Sign Out
+          </button>)}
         </li>
       </ul>
     </nav>
