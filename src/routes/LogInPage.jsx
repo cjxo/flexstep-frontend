@@ -34,9 +34,9 @@ const LogInPage = () => {
   return (
     <div className={routesStyles.authPage}>
       <h2>Log In to Your Account</h2>
-      <p>Or, <Link to="/log-in">sign up for a new account</Link></p>
+      <p>Or, <Link to="/sign-up">sign up for a new account</Link></p>
 
-      <form onSubmit={handleSubmit}>
+      <form className="common-form-design" onSubmit={handleSubmit}>
         <div className="label-input-pair">
           <label htmlFor="email">Email</label>
           <input type="email" id="email" name="email" required />
@@ -47,7 +47,7 @@ const LogInPage = () => {
           <input type="password" id="password" name="password" required />
         </div>
 
-        <p className={`${routesStyles.errorMsg} ${error ? routesStyles.visible : ""}`}>{error}</p>
+        <p className={`error-msg ${error ? "visible" : ""}`}>{error}</p>
         <button disabled={isLoading} className="common-button-style0">
           {isLoading ? <DotLoader label="Loading" /> : "Submit"}
         </button>

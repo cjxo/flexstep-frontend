@@ -21,23 +21,20 @@
       text-decoration: underline;
     }
   }
+}
 
-  > form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 16px;
+.profileDisplay {
+  .profileHeader {
+    .profilePic {
+      margin: auto;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-color: #eeeeee;
+    }
 
-    .errorMsg {
-      background-color: #e79085;
-      padding: 12px 16px;
-      border-radius: 4px;
-      color: white;
-
-      display: none;
-      &.visible {
-        display: block;
-      }
+    h2 {
+      text-align: center;
     }
   }
 }

@@ -50,7 +50,7 @@ const SignUpPage = () => {
       <h2>Create a New Account</h2>
       <p>Or, <Link to="/log-in">sign in to an existing account</Link></p>
 
-      <form onSubmit={handleSubmit}>
+      <form className="common-form-design" onSubmit={handleSubmit}>
         <div className="label-input-pair">
           <label htmlFor="first_name">First Name</label>
           <input type="text" id="first_name" name="first_name" required />
@@ -81,7 +81,7 @@ const SignUpPage = () => {
           <input type="password" id="conf_password" name="conf_password" required />
         </div>
 
-        <p className={`${routesStyles.errorMsg} ${error ? routesStyles.visible : ""}`}>{error}</p>
+        <p className={`error-msg ${error ? "visible" : ""}`}>{error}</p>
         <button disabled={isLoading} className="common-button-style0">
           {isLoading ? <DotLoader label="Loading" /> : "Submit"}
         </button>

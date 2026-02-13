@@ -119,6 +119,11 @@ a.common-link-style0 {
   transition-duration: 200ms;
 }
 
+.destructive-button {
+  background-color: #ee675f;
+}
+
+.destructive-button:hover,
 .common-button-style0:hover {
   background-color: transparent;
   color: var(--blue0);
@@ -128,4 +133,39 @@ a.common-link-style0 {
   display: flex;
   flex-direction: column;
   gap: 6px;
+
+  input.immutable {
+    border: 1px solid #dddddd;
+  }
+}
+
+.common-form-design {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+
+  input, button {
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid black;
+  }
+
+  .error-msg {
+    background-color: #e79085;
+    padding: 12px 16px;
+    border-radius: 4px;
+    color: white;
+
+    display: none;
+    &.visible {
+      display: block;
+    }
+  }
+
+  .mutation-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: right;
+  }
 }
