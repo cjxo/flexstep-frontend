@@ -8,6 +8,7 @@ const getUrl = (resource) => {
 
 const getCrossOriginOptions = () => {
   if (import.meta.env.MODE === "development") {
+    console.log("HELLO WORD")
     return {
       mode: "cors",
       credentials: "include",
@@ -25,7 +26,8 @@ const fetch2 = async (resource, method, body) => {
         "Content-Type": "application/json",
       },
       body: body ? JSON.stringify(body) : undefined,
-      ...getCrossOriginOptions(),
+      mode: "cors",
+     // ...getCrossOriginOptions(),
     });
 
     const data = await response.json();
@@ -45,5 +47,6 @@ const fetch2 = async (resource, method, body) => {
 export default {
   user: {
     insert: async (first_name, last_name, username, password, email) => await fetch2("/api/user/", "POST", { first_name, last_name, username, password, email }),
+    login: async (email, password) => await fetch2("/api/user/log-in/", "POST", { email, password }),
   },
 };

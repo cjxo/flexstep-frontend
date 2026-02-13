@@ -40,7 +40,7 @@ const SignUpPage = () => {
         } else {
           setError("");
           e.target.reset();
-          navigate("/");
+          navigate("/log-in");
         }
 
         setIsLoading(false);
