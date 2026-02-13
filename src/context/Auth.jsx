@@ -24,11 +24,11 @@ const AuthProvider = ({children}) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState({});
-
-  /*
+  
   useEffect(() => {
     const isauth = async () => {
       const result = await api.user.isAuth();
+      console.log(result);
       if (result.ok && (result.timeRemaining > 0)) {
         const bufferTime = 10;
         const reloadTime = (result.timeRemaining - bufferTime) * 1000;
@@ -44,8 +44,8 @@ const AuthProvider = ({children}) => {
       }
     };
 
-    isAuth();
-  }, []);*/
+    isauth();
+  }, []);
 
   const signup = async (first_name, last_name, username, password, email) => {
     const result = await api.user.insert(first_name, last_name, username, password, email);
