@@ -8,7 +8,6 @@ const getUrl = (resource) => {
 
 const getCrossOriginOptions = () => {
   if (import.meta.env.MODE === "development") {
-    console.log("HELLO WORD")
     return {
       mode: "cors",
       credentials: "include",
@@ -26,8 +25,8 @@ const fetch2 = async (resource, method, body) => {
         "Content-Type": "application/json",
       },
       body: body ? JSON.stringify(body) : undefined,
-      mode: "cors",
-     // ...getCrossOriginOptions(),
+      //mode: "cors",
+      ...getCrossOriginOptions(),
     });
 
     const data = await response.json();
