@@ -46,7 +46,7 @@ const ProfilePage = () => {
         <div className={routesStyles.profilePic}></div>
         <h2>{user?.username}</h2>
       </div>
-      <form className="common-form-design">
+      <form className="common-form-design" onSubmit={handleUpdate}>
         <div className="label-input-pair">
           <label htmlFor="first_name">First Name</label>
           <input type="text" id="first_name" name="first_name" defaultValue={user?.first_name} required />
@@ -75,7 +75,7 @@ const ProfilePage = () => {
         <p className={`error-msg ${error ? "visible" : ""}`}>{error}</p>
         <p className={`success-msg ${success ? "visible" : ""}`}>{success}</p>
         <div className="mutation-buttons">
-          <button className="destructive-button common-button-style0">
+          <button className="destructive-button common-button-style0" type="button">
             Delete Account
           </button>
           <button disabled={isLoading} className="common-button-style0" onClick={handleUpdate}>
