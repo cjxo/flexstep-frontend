@@ -6,6 +6,7 @@ import routesStyles from "../styles/routes.module.css";
 const ProfilePage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const auth = useAuth();
   const user = auth.user;
   const date = user?.joined_date && new Date(user?.joined_date).toLocaleString();
@@ -30,8 +31,10 @@ const ProfilePage = () => {
         if (!result.ok) {
           console.log(result.message);
           setError(result.message);
+          setSuccess("");
         } else {
           setError("");
+          setSuccess(result.message);
         }
         setIsLoading(false);
       });
@@ -70,6 +73,7 @@ const ProfilePage = () => {
         </div>
 
         <p className={`error-msg ${error ? "visible" : ""}`}>{error}</p>
+        <p className={`success-msg ${success ? "visible" : ""}`}>{success}</p>
         <div className="mutation-buttons">
           <button className="destructive-button common-button-style0">
             Delete Account
