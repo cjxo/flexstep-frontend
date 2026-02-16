@@ -49,5 +49,6 @@ export default {
     login: async (email, password) => await fetch2("/api/user/log-in/", "POST", { email, password }),
     isAuth: async () => await fetch2("/api/user/is-auth/", "GET"),
     signOut: async () => await fetch2("/api/user/sign-out/", "POST"),
+    update: async (id, first_name, last_name, username, email) => await fetch2(`/api/user/${id}`, "PUT", { first_name, last_name, username, email }),
   },
 };

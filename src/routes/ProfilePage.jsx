@@ -5,9 +5,37 @@ import routesStyles from "../styles/routes.module.css";
 
 const ProfilePage = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const auth = useAuth();
   const user = auth.user;
   const date = user?.joined_date && new Date(user?.joined_date).toLocaleString();
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+
+    const form = e.target.parentElement.parentElement;
+    
+    const fd = new FormData(form);
+    const first_name = fd.get("first_name");
+    const last_name = fd.get("last_name");
+    const username = fd.get("username");
+    const email = fd.get("email");
+    const password = fd.get("password");
+    const conf_password = fd.get("conf_password");
+
+    setIsLoading(true);
+    auth
+      .update(first_name, last_name, username, email)
+      .then(result => {
+        if (!result.ok) {
+          console.log(result.message);
+          setError(result.message);
+        } else {
+          setError("");
+        }
+        setIsLoading(false);
+      });
+  };
 
   return (
     <div className={routesStyles.profileDisplay}>
@@ -41,11 +69,12 @@ const ProfilePage = () => {
           <input readOnly className="immutable" type="text" id="date_joined" name="date_joined" defaultValue={date} required />
         </div>
 
+        <p className={`error-msg ${error ? "visible" : ""}`}>{error}</p>
         <div className="mutation-buttons">
           <button className="destructive-button common-button-style0">
             Delete Account
           </button>
-          <button disabled={isLoading} className="common-button-style0">
+          <button disabled={isLoading} className="common-button-style0" onClick={handleUpdate}>
             {isLoading ? <DotLoader label="Loading" /> : "Update Account"}
           </button>
         </div>

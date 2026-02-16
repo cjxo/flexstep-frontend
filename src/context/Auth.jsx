@@ -17,6 +17,9 @@ const AuthContext = createContext({
   signout: async () => {
     return { ok: false, message: "" };
   },
+  update: async (first_name, last_name, username, email) => {
+    return { ok: false, message: "" };
+  },
 });
 
 const AuthProvider = ({children}) => {
@@ -45,18 +48,23 @@ const AuthProvider = ({children}) => {
       }
     };
 
+    setIsLoading(true);
     isauth();
   }, []);
 
   const signup = async (first_name, last_name, username, password, email) => {
+    setIsLoading(true);
     const result = await api.user.insert(first_name, last_name, username, password, email);
     if (result.ok) {
       navigate("/log-in");
     }
+
+    setIsLoading(false);
     return result;
   };
 
   const login = async (email, password) => {
+    setIsLoading(true);
     const result = await api.user.login(email, password);
     if (result.ok) {
       setIsAuth(true);
@@ -68,16 +76,28 @@ const AuthProvider = ({children}) => {
   };
 
   const signout = async () => {
+    setIsLoading(true);
     const result = await api.user.signOut();
     setIsAuth(false);
     setUser({});
     navigate("/log-in");
+    setIsLoading(false);
     return result;
+  };
+
+  const update = async (first_name, last_name, username, email) => {
+    setIsLoading(true);
+    const result = await api.user.update(user.id, first_name, last_name, username, email);
+    if (result.ok) {
+      setUser(result.user);
+    }
+    setIsLoading(false);
+    return(result);
   };
 
   return (
     <AuthContext.Provider
-      value={{ isLoading, isAuth, user, login, signup, signout }}
+      value={{ isLoading, isAuth, user, login, signup, signout, update }}
     >
       {children}
     </AuthContext.Provider>
