@@ -40,6 +40,14 @@ const ProfilePage = () => {
       });
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    auth
+      .deletee()
+      .then(() => setIsLoading(false));
+  };
+
   return (
     <div className={routesStyles.profileDisplay}>
       <div className={routesStyles.profileHeader}>
@@ -75,7 +83,7 @@ const ProfilePage = () => {
         <p className={`error-msg ${error ? "visible" : ""}`}>{error}</p>
         <p className={`success-msg ${success ? "visible" : ""}`}>{success}</p>
         <div className="mutation-buttons">
-          <button className="destructive-button common-button-style0" type="button">
+          <button className="destructive-button common-button-style0" type="button" onClick={handleDelete}>
             Delete Account
           </button>
           <button disabled={isLoading} className="common-button-style0" onClick={handleUpdate}>

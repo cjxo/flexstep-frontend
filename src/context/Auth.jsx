@@ -20,6 +20,9 @@ const AuthContext = createContext({
   update: async (first_name, last_name, username, email) => {
     return { ok: false, message: "" };
   },
+  deletee: async () => {
+    return { ok: false, message: "" };
+  },
 });
 
 const AuthProvider = ({children}) => {
@@ -95,9 +98,21 @@ const AuthProvider = ({children}) => {
     return(result);
   };
 
+  const deletee = async () => {
+    setIsLoading(true);
+    const result = await api.user.deletee(user.id);
+    if (result.ok) {
+      console.log("Delete");
+      setUser({});
+      setIsAuth(false);
+      navigate("/log-in");
+    }
+    setIsLoading(false);
+    return(result);
+  };
   return (
     <AuthContext.Provider
-      value={{ isLoading, isAuth, user, login, signup, signout, update }}
+      value={{ isLoading, isAuth, user, login, signup, signout, update, deletee }}
     >
       {children}
     </AuthContext.Provider>

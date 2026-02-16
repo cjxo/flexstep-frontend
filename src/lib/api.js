@@ -50,5 +50,6 @@ export default {
     isAuth: async () => await fetch2("/api/user/is-auth/", "GET"),
     signOut: async () => await fetch2("/api/user/sign-out/", "POST"),
     update: async (id, first_name, last_name, username, email) => await fetch2(`/api/user/${id}`, "PUT", { first_name, last_name, username, email }),
+    deletee: async (id) => await fetch2(`/api/user/${id}`, "DELETE"),
   },
 };
